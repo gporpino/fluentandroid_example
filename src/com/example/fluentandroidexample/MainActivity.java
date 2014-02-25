@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 		int count = new Select("COUNT(*)").from(FeedEntry.TABLE_NAME).execute().getCursor().getInt(0);
 		
 		new Insert().into(FeedEntry.TABLE_NAME)
-			.value(FeedEntry.COLUMN_NAME_ENTRY_ID, 1)
+			.value(FeedEntry.COLUMN_NAME_ENTRY_ID, count)
 			.value(FeedEntry.COLUMN_NAME_TITLE, "Teste Porpino "+ (count + 1)).execute();
 		
 		
