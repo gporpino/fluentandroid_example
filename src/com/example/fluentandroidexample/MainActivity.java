@@ -18,15 +18,15 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		int count = new br.org.cesar.gporpino.fluentandroid.database.direct.Select("COUNT(*)").from(FeedEntry.TABLE_NAME).execute().getCursor().getInt(0);
+		int count = new Select(Select.COUNT_ALL).from(FeedEntry.TABLE_NAME).execute().getCursor().getInt(0);
 		
 		new Insert().into(FeedEntry.TABLE_NAME)
 			.value(FeedEntry.COLUMN_NAME_ENTRY_ID, count)
 			.value(FeedEntry.COLUMN_NAME_TITLE, "Teste Porpino "+ (count + 1)).execute();
 		
 		
-		
-		FluentCursor cursor = new Select(FeedEntry.COLUMN_NAME_TITLE, FeedEntry.COLUMN_NAME_SUBTITLE).from(FeedEntry.TABLE_NAME)
+		//Melhorar o Where like  (? = ?, asdasd)
+		FluentCursor cursor = new Select(Select.ALL).from(FeedEntry.TABLE_NAME).where("", null)
 				.execute();
 		
 		

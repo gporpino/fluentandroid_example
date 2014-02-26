@@ -20,9 +20,10 @@ public class FluentFeedReaderDbHelper extends FluentSQLiteOpenHelper {
 	}
 
 	@Override
-	protected void configureTables(List<Table> tables) {
+	protected void setupTables(List<Table> tables) {
 		tables.add(new Table(FeedEntry.TABLE_NAME)
-				.addColumn(FeedEntry._ID, Type.INTEGER, Constraint.PRIMARY_KEY, Constraint.AUTO_INCREMENT, Constraint.NOT_NULL)
+				.addColumn(FeedEntry._ID, Type.INTEGER, 
+						Constraint.NOT_NULL, Constraint.AUTO_INCREMENT, Constraint.PRIMARY_KEY)
 				.addColumn(FeedEntry.COLUMN_NAME_ENTRY_ID, Type.TEXT)
 				.addColumn(FeedEntry.COLUMN_NAME_TITLE, Type.TEXT)
 				.addColumn(FeedEntry.COLUMN_NAME_SUBTITLE, Type.TEXT));
